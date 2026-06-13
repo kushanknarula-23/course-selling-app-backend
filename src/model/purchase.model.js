@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-
-
 const purchaseSchema = new mongoose.Schema({
     courseId:{
         type:mongoose.Schema.Types.ObjectId,

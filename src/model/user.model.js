@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:[true,"first name is required"],
     },
-    lastname:{
+    lastName:{
         type:String,
         required:[true, "last name is required"],
     },
@@ -20,8 +20,22 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
+    },
+    role:{
+        type:String,
+        enum:{
+            values:["user","admin"]
+        },
+        default:"user",
+        required:[true,"role is required"]
+
     }
 },{timestamps:true})
+
 
 userSchema.pre("save",async function(){
     if(!this.isModified("password")){
